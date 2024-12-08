@@ -85,12 +85,23 @@ fun MainScreen() {
                     color = mainHeadLineColor,
                     fontSize = 16.sp
                 )
-                Text(
-                    text = "아래 예시를 통해 챗봇을 이용해 보세요.",
-                    style = TextStyle(
-                        fontFamily = FontFamily(Font(R.font.nanum_square_r)),
-                        color = Color(0xFF666666),
-                        fontSize = 10.sp
+            )
+            Box(
+                modifier = Modifier
+                    .border(1.dp, Color.Red, RoundedCornerShape(12.dp))
+                    .padding(8.dp)
+            ) {
+                Column {
+                    Text(
+                        text = "저희 Chian은 AI 기반 + RAG 시스템을 활용한 챗봇을 통해 자동차의 성능에 대한 정보를 제공해요." +
+                                "\n일일이 하나씩 찾아 들어가지 않아도, 챗봇을 통해 빠르게 정보를 얻을 수 있어요.\n" +
+                                "처음 쓰시는 분도 아래 예시와 같이 사용하시면 편하게 이용 가능해요! " +
+                                "\n같이 아래로 이동해서 사용 방법을 볼까요?",
+                        style = TextStyle(
+                            fontFamily = FontFamily(Font(R.font.nanum_square_r)),
+                            color = Color.Black,
+                            fontSize = 13.sp
+                        )
                     )
                 )
             }
