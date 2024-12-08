@@ -75,15 +75,15 @@ fun MainScreen() {
                 )
             )
 
-            Row(
-                modifier = Modifier,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    modifier = Modifier.align(Alignment.Top),
-                    text = "* ",
-                    fontSize = 8.sp,
-                    color = Color(0xFF666666)
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Text(
+                modifier = Modifier.padding(bottom = 8.dp),
+                text = "Chian의 특징 및 사용 방법이 뭔가요?",
+                style = TextStyle(
+                    fontFamily = FontFamily(Font(R.font.nanum_square_b)),
+                    color = mainHeadLineColor,
+                    fontSize = 16.sp
                 )
                 Text(
                     text = "아래 예시를 통해 챗봇을 이용해 보세요.",
