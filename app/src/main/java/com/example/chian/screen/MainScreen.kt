@@ -49,7 +49,9 @@ fun MainScreen() {
             .verticalScroll(rememberScrollState())
     ) {
         ChianTopBar()
-        Column {
+        Column(
+            modifier = Modifier.padding(horizontal = 16.dp)
+        ) {
             Text(
                 text = buildAnnotatedString {
                     withStyle(
