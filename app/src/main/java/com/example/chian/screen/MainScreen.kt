@@ -103,7 +103,7 @@ fun MainScreen() {
                             fontSize = 13.sp
                         )
                     )
-                )
+                }
             }
 
             Spacer(modifier = Modifier.height(20.dp))
