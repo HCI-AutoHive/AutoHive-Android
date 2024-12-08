@@ -123,6 +123,26 @@ fun MainScreen() {
                 onClickListener = {}
             )
 
+            Row(
+                modifier = Modifier.padding(start = 10.dp,top = 5.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    modifier = Modifier.align(Alignment.Top),
+                    text = "* ",
+                    fontSize = 8.sp,
+                    color = Color(0xFF666666)
+                )
+                Text(
+                    text = "위의 예시를 통해 챗봇을 이용해 보세요.",
+                    style = TextStyle(
+                        fontFamily = FontFamily(Font(R.font.nanum_square_r)),
+                        color = Color(0xFF666666),
+                        fontSize = 10.sp
+                    )
+                )
+            }
+
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = buildAnnotatedString {
