@@ -106,6 +106,18 @@ fun MainScreen() {
                 )
             }
 
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Text(
+                modifier = Modifier.padding(bottom = 8.dp),
+                text = "Chian 사용 방법",
+                style = TextStyle(
+                    fontFamily = FontFamily(Font(R.font.nanum_square_b)),
+                    color = mainHeadLineColor,
+                    fontSize = 16.sp
+                )
+            )
+
             ChatBotBox(
                 modifier = Modifier,
                 onClickListener = {}
