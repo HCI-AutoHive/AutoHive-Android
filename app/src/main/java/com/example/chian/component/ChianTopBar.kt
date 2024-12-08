@@ -47,7 +47,7 @@ fun ChianTopBar(
             Text(
                 text = title,
                 style = TextStyle(
-                    fontFamily = FontFamily(Font(R.font.notosans_bold)),
+                    fontFamily = FontFamily(Font(R.font.nanum_square_eb)),
                     fontSize = 21.sp,
                     lineHeight = 28.sp,
                     color = mainBlueColor
