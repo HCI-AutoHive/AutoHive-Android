@@ -232,7 +232,7 @@ private fun ChatBotBox(
                             withStyle(SpanStyle(color = mainBlueColor)) { append("성능") }
                             append("에 대해서 ")
                             withStyle(SpanStyle(color = mainBlueColor)) { append("대화") }
-                            append("를 해보실래요?\n")
+                            append("를 해보실래요?\n\n")
                             withStyle(SpanStyle(color = mainBlueColor)) { append("차량명(모델명)") }
                             append("만 작성해 주시면 됩니다.")
                         },
