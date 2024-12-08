@@ -62,7 +62,7 @@ fun ChianTextField(
                 },
                 textStyle = TextStyle(
                     color = Color.Black,
-                    fontFamily = FontFamily(Font(R.font.notosans_regular)),
+                    fontFamily = FontFamily(Font(R.font.nanum_square_r)),
                     fontSize = 18.sp
                 ),
                 decorationBox = { innerTextField ->
