@@ -97,7 +97,10 @@ fun ChatScreen(
             .windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
         ChianChatTopBar(
-            onClick = { navHostController.popBackStack() }
+            onClick = {
+                navHostController.popBackStack()
+                mainViewModel.resetChatMessages()
+            }
         ) // 상단바를 화면에 고정
         LazyColumn(
             modifier = Modifier
