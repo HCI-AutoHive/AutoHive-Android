@@ -176,7 +176,10 @@ fun MainScreen(
 
             ChatBotBox(
                 modifier = Modifier,
-                onClickListener = {}
+                onClickListener = {
+                    navHostController.navigate("chat")
+                    mainViewModel.resetChatMessages()
+                }
             )
 
             Row(
