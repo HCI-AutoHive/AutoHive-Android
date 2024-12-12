@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.chian.R
+import com.example.chian.ui.theme.mainColor
 import com.example.chian.ui.theme.textFieldBackGroundColor
 import com.example.chian.ui.theme.textFieldIconColor
 
@@ -90,7 +91,7 @@ fun ChianTextField(
                     },
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_send_24),
                 contentDescription = "보내기 아이콘",
-                tint = if (isLoading) Color.LightGray else textFieldIconColor
+                tint = if (isLoading) Color.LightGray else mainColor
             )
         }
     }
