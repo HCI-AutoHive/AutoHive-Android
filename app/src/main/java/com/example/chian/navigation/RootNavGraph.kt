@@ -20,7 +20,10 @@ fun RootNavGraph(
         startDestination = Route.HOME
     ){
         composable(Route.HOME) {
-            MainScreen()
+            MainScreen(
+                mainViewModel = mainViewModel,
+                navHostController = navHostController
+            )
         }
         composable(Route.CHAT) {
             ChatScreen(
