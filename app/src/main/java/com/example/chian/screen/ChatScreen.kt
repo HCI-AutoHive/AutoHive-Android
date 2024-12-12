@@ -47,6 +47,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.bumpercar.data.AuthorData
@@ -138,7 +139,8 @@ fun ChatScreen(
                                 text = chatMessageWithAuthor.messageData.query,
                                 style = TextStyle(
                                     fontFamily = FontFamily(Font(R.font.nanum_square_r)),
-                                    color = Color.White
+                                    color = Color.White,
+                                    lineHeight = 17.sp
                                 )
                             )
                         } else {
@@ -148,7 +150,8 @@ fun ChatScreen(
                                     text = formatMessageText(chatMessageWithAuthor.messageData.query),
                                     style = TextStyle(
                                         fontFamily = FontFamily(Font(R.font.nanum_square_r)),
-                                        color = Color.Black
+                                        color = Color.Black,
+                                        lineHeight = 17.sp
                                     )
                                 )
                             } else {
@@ -157,7 +160,8 @@ fun ChatScreen(
                                     text = formatMessageText(chatMessageWithAuthor.messageData.query),
                                     style = TextStyle(
                                         fontFamily = FontFamily(Font(R.font.nanum_square_r)),
-                                        color = Color.Black
+                                        color = Color.Black,
+                                        lineHeight = 17.sp
                                     ),
                                     spec = tween(
                                         durationMillis = (formatMessageText(chatMessageWithAuthor.messageData.query).length * 30),
