@@ -68,7 +68,8 @@ fun MainScreen(
                 },
                 style = TextStyle(
                     fontFamily = FontFamily(Font(R.font.nanum_square_eb)),
-                    lineHeight = 20.sp
+                    lineHeight = 20.sp,
+                    color = Color.Black
                 )
             )
 
