@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.chian.R
-import com.example.chian.ui.theme.mainBlueColor
+import com.example.chian.ui.theme.mainColor
 
 @Composable
 fun ChianTopBar(
@@ -50,7 +50,7 @@ fun ChianTopBar(
                     fontFamily = FontFamily(Font(R.font.nanum_square_eb)),
                     fontSize = 21.sp,
                     lineHeight = 28.sp,
-                    color = mainBlueColor
+                    color = mainColor
                 ),
             )
 
@@ -61,7 +61,7 @@ fun ChianTopBar(
                     ),
                     imageVector = icon,
                     contentDescription = "아이콘 모양",
-                    tint = mainBlueColor
+                    tint = mainColor
                 )
             }
         }
