@@ -30,18 +30,22 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.chian.R
 import com.example.chian.component.ChianTopBar
 import com.example.chian.ui.theme.chatBoxAccentTextColor
 import com.example.chian.ui.theme.chatBoxBackColor
 import com.example.chian.ui.theme.mainColor
 import com.example.chian.ui.theme.mainHeadLineColor
+import com.example.chian.viewmodel.MainViewModel
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    navHostController: NavHostController,
+    mainViewModel: MainViewModel
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
