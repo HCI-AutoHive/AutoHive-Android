@@ -6,6 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.chian.screen.ChatScreen
+import com.example.chian.screen.DetailsMainScreen
+import com.example.chian.screen.DetailsScreen
 import com.example.chian.screen.MainScreen
 import com.example.chian.viewmodel.MainViewModel
 
@@ -27,6 +29,18 @@ fun RootNavGraph(
         }
         composable(Route.CHAT) {
             ChatScreen(
+                mainViewModel = mainViewModel,
+                navHostController = navHostController
+            )
+        }
+        composable(Route.DETAILS_MAIN) {
+            DetailsMainScreen(
+                mainViewModel = mainViewModel,
+                navHostController = navHostController
+            )
+        }
+        composable(Route.DETAILS) {
+            DetailsScreen(
                 mainViewModel = mainViewModel,
                 navHostController = navHostController
             )
