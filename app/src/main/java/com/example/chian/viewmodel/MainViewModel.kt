@@ -10,6 +10,8 @@ import com.example.bumpercar.data.AuthorData
 import com.example.bumpercar.data.ChatMessageData
 import com.example.bumpercar.data.ChatMessageWithAuthor
 import com.example.bumpercar.data.MessageData
+import com.example.chian.data.CarDetailData
+import com.example.chian.data.CarsData
 import com.example.chian.network.RetrofitClient
 import com.example.chian.ui.theme.chatBoxAccentTextColor
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,12 +19,23 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class MainViewModel: ViewModel() {
-    private val _chatMessageData = MutableStateFlow(ChatMessageData(emptyList(), AuthorData("","")))
+class MainViewModel : ViewModel() {
+    private val _chatMessageData =
+        MutableStateFlow(ChatMessageData(emptyList(), AuthorData("", "")))
     val chatMessageData = _chatMessageData.asStateFlow()
 
-    private val _chatMessageDataWithAuthor = MutableStateFlow<List<ChatMessageWithAuthor>>(emptyList())
+    private val _chatMessageDataWithAuthor =
+        MutableStateFlow<List<ChatMessageWithAuthor>>(emptyList())
     val chatMessageDataWithAuthor = _chatMessageDataWithAuthor.asStateFlow()
+
+    private val _carsData = MutableStateFlow<List<CarsData>>(emptyList())
+    val carsData = _carsData.asStateFlow()
+
+    private val _carDetailData = MutableStateFlow(CarDetailData(0, "", ""))
+    val carDetailData = _carDetailData.asStateFlow()
+
+    private val _currentCarId = MutableStateFlow<Int?>(null)
+    val currentCarId = _currentCarId.asStateFlow()
 
     private val _textField = MutableStateFlow("")
     val textField = _textField.asStateFlow()
@@ -105,6 +118,52 @@ class MainViewModel: ViewModel() {
                 Log.e("ChatViewModel", e.toString())
             } finally {
                 _isLoading.value = false
+            }
+        }
+    }
+
+    fun getCurrentCarId(carId: Int) {
+        _currentCarId.value = carId
+    }
+
+    fun getCarsData() {
+        viewModelScope.launch {
+            val apiService = RetrofitClient.getCarApi()
+            try {
+                val response = apiService.getCars()
+                _carsData.value = response
+            } catch (e: Exception) {
+                when {
+                    e.message?.contains("500") == true -> {
+                        Log.e("MainViewModel_CarsData", "500 Sever Error")
+                    }
+
+                    else -> {
+                        Log.e("MainViewModel_CarsData", e.toString())
+                    }
+                }
+            }
+        }
+    }
+
+    fun getCarDetailData() {
+        viewModelScope.launch {
+            val apiService = RetrofitClient.getCarApi()
+            try {
+                _currentCarId.value?.let { carId ->
+                    val response = apiService.getDetails(carId)
+                    _carDetailData.value = response
+                } ?: Log.e("MainViewModel_CDD", "CarId가 없어요~")
+            } catch (e: Exception) {
+                when {
+                    e.message?.contains("400") == true -> {
+                        Log.e("MainViewModel_CDD", "400 잘 못된 요청")
+                    }
+
+                    e.message?.contains("500") == true -> {
+                        Log.e("MainViewModel_CDD", "500 서버 오류")
+                    }
+                }
             }
         }
     }
