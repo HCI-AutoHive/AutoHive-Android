@@ -42,7 +42,8 @@ fun BottomNavigationBar(navController: NavController) {
 
     val items = listOf(
         BottomNavItem.ChatScreen,
-        BottomNavItem.HomeScreen
+        BottomNavItem.HomeScreen,
+        BottomNavItem.DetailMainScreen
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
