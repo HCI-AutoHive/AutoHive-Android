@@ -46,7 +46,7 @@ sealed class BottomNavItem(
         }
     })
 
-    object ReviewMainScreen : BottomNavItem(Route.DETAILS_MAIN, "리뷰", { isSelect ->
+    object DetailMainScreen : BottomNavItem(Route.DETAILS_MAIN, "정보", { isSelect ->
         if (isSelect) {
             Icon(
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_stocks),
