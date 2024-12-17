@@ -10,14 +10,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
@@ -33,7 +36,9 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import coil.compose.AsyncImage
 import com.example.chian.R
 import com.example.chian.component.ChianTopBar
 import com.example.chian.viewmodel.MainViewModel
@@ -43,7 +48,15 @@ fun DetailsScreen(
     mainViewModel: MainViewModel,
     navHostController: NavHostController
 ) {
-    Column(modifier = Modifier.fillMaxSize()) {
+    val carDetailData = mainViewModel.carDetailData.collectAsStateWithLifecycle()
+    val carNameImageData = mainViewModel.carNameImageData.collectAsStateWithLifecycle()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    )
+    {
         ChianTopBar()
 
         Text(
@@ -69,13 +82,18 @@ fun DetailsScreen(
                     .height(200.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .background(Color.Red)
-            ){
-
+            ) {
+                AsyncImage(
+                    modifier = Modifier.fillMaxSize(),
+                    model = carNameImageData.value.carImage,
+                    contentDescription = "차량 이미지",
+                    contentScale = ContentScale.Crop
+                )
             }
 
             Text(
                 modifier = Modifier.padding(vertical = 8.dp),
-                text = "차량명",
+                text = carNameImageData.value.carName,
                 style = TextStyle(
                     fontSize = 20.sp,
                     color = Color.Black,
@@ -89,8 +107,8 @@ fun DetailsScreen(
                             fontFamily = FontFamily(Font(R.font.nanum_square_eb)),
                             fontSize = 20.sp,
                         )
-                    ){
-                        append("[성능]")
+                    ) {
+                        append("[성능]\n")
                     }
 
                     withStyle(
@@ -99,8 +117,8 @@ fun DetailsScreen(
                             fontSize = 15.sp,
                             baselineShift = BaselineShift.Subscript
                         )
-                    ){
-                        append("\n차량의 성능은 뭐시기 어쩌구 어쩌구 차가 좋을까 안좋을까? 몰라~")
+                    ) {
+                        append(carDetailData.value.perform)
                     }
                 },
                 color = Color.Black,
@@ -113,8 +131,8 @@ fun DetailsScreen(
                             fontFamily = FontFamily(Font(R.font.nanum_square_eb)),
                             fontSize = 20.sp,
                         )
-                    ){
-                        append("[안전]")
+                    ) {
+                        append("[안전]\n")
                     }
                     withStyle(
                         SpanStyle(
@@ -122,8 +140,8 @@ fun DetailsScreen(
                             fontSize = 15.sp,
                             baselineShift = BaselineShift.Subscript
                         )
-                    ){
-                        append("\n차량의 안전은 뭐시기 어쩌구 어쩌구 차가 좋을까 안좋을까? 몰라~")
+                    ) {
+                        append(carDetailData.value.safety)
                     }
                 },
                 color = Color.Black
