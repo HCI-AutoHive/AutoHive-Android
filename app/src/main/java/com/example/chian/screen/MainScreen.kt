@@ -84,7 +84,7 @@ fun MainScreen(
                             color = mainColor
                         )
                     ) {
-                        append("Chian")
+                        append("Auto Hive")
                     }
                     append("의 특징 및 사용 방법이 뭔가요?")
                 },
@@ -164,7 +164,7 @@ fun MainScreen(
                             color = mainColor
                         )
                     ) {
-                        append("Chian")
+                        append("Auto Hive")
                     }
                     append("의 사용 방법")
                 },
