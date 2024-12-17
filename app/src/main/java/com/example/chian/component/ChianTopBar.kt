@@ -26,7 +26,7 @@ import com.example.chian.ui.theme.mainColor
 @Composable
 fun ChianTopBar(
     modifier: Modifier = Modifier,
-    title: String = "Chian",
+    title: String = "Auto Hive",
     icon: ImageVector? = null,
     onClick: () -> Unit = {}
 ) {
