@@ -11,6 +11,7 @@ import com.example.bumpercar.data.ChatMessageData
 import com.example.bumpercar.data.ChatMessageWithAuthor
 import com.example.bumpercar.data.MessageData
 import com.example.chian.data.CarDetailData
+import com.example.chian.data.CarNameImageData
 import com.example.chian.data.CarsData
 import com.example.chian.network.RetrofitClient
 import com.example.chian.ui.theme.chatBoxAccentTextColor
@@ -37,6 +38,9 @@ class MainViewModel : ViewModel() {
     private val _currentCarId = MutableStateFlow<Int?>(null)
     val currentCarId = _currentCarId.asStateFlow()
 
+    private val _carNameImageData = MutableStateFlow(CarNameImageData("",""))
+    val carNameImageData = _carNameImageData.asStateFlow()
+
     private val _textField = MutableStateFlow("")
     val textField = _textField.asStateFlow()
 
@@ -51,6 +55,7 @@ class MainViewModel : ViewModel() {
 
     init {
         setInitialChatMessage()
+        getCarsData()
     }
 
     private fun setInitialChatMessage() {
@@ -72,6 +77,7 @@ class MainViewModel : ViewModel() {
     // 대화 초기화 메서드
     fun resetChatMessages() {
         setInitialChatMessage() // 초기 메시지로 리셋
+        getCarsData()
     }
 
     fun sendUserMessage(text: String) {
@@ -122,6 +128,10 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun gutterCarNameImageData(carName: String, carImage: String) {
+        _carNameImageData.value = CarNameImageData(carName, carImage)
+    }
+
     fun getCurrentCarId(carId: Int) {
         _currentCarId.value = carId
     }
@@ -132,6 +142,7 @@ class MainViewModel : ViewModel() {
             try {
                 val response = apiService.getCars()
                 _carsData.value = response
+                Log.d("MainViewModel_CarsData", response.toString())
             } catch (e: Exception) {
                 when {
                     e.message?.contains("500") == true -> {
